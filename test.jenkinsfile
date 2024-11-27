@@ -28,6 +28,12 @@ pipeline {
                 sh 'docker build -t calculator-app-finished .'
             }
         }
+        stage ('Push artifact'){
+            steps{
+                sh 'docker tag calculator-app-finished milanaaskhabova/calculator-app-finished:latest'
+                sh 'docker push milanaaskhabova/calculator-app-finished:latest'
+            }
+        }
         
     }
 }
