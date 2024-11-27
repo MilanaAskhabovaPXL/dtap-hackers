@@ -30,7 +30,7 @@ pipeline {
         }
         stage ('Push artifact'){
             steps{
-               // sh 'docker tag calculator-app-finished milanaaskhabova/calculator-app-finished:latest'
+                sh 'docker tag calculator-app-finished milanaaskhabova/calculator-app-finished:latest'
                 sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}'
                 sh 'docker push milanaaskhabova/calculator-app-finished:latest'
             }
