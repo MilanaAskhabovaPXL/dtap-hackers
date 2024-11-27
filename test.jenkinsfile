@@ -30,9 +30,11 @@ pipeline {
         }
         stage ('Push artifact'){
             steps{
+                withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
                 sh 'docker tag calculator-app-finished milanaaskhabova/calculator-app-finished:latest'
-                sh 'docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}'
                 sh 'docker push milanaaskhabova/calculator-app-finished:latest'
+                }
             }
         }
         
