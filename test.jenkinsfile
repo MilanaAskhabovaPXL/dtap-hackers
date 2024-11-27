@@ -39,8 +39,7 @@ pipeline {
         }
         stage ('deployment'){
             steps{
-                sh 'docker stop calculator-app'
-                sh 'docker rm calculator-app'
+                sh 'docker rm -f calculator-app'
                 sh 'docker run -d --name calculator-app -p 3000:3000 milanaaskhabova/calculator-app-finished:latest'
             }
         }
