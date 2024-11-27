@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Install dependencies') {
             steps {
-                testenvnode('npm') {
+                nodejs('npm') {
                     sh 'npm install'
                 }
             }
