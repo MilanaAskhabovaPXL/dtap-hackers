@@ -1,10 +1,17 @@
 pipeline {
     agent any
-  
+    tools {
+        nodejs 'testenvnode'
+    }
     stages {
         stage ('cleanup'){
             steps{
-                // TODO
+                cleanWs()
+            }
+        }
+        stage('Install dependencies') {
+            steps {
+                sh 'npm install'
             }
         }
         stage('fetch app code') {
