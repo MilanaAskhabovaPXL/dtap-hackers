@@ -16,7 +16,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/PXL-2TIN-DevOps-Resources/calculator-app-finished.git'
             }
         }
-
         stage('Install dependencies') {
             steps {
                 nodejs('testenvnode') {
@@ -24,5 +23,11 @@ pipeline {
                 }
             }
         }
+        stage ('Build artifact'){
+            steps{
+                sh 'docker build -t calculator-app-finished .'
+            }
+        }
+        
     }
 }
