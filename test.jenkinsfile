@@ -11,7 +11,9 @@ pipeline {
         }
         stage('Install dependencies') {
             steps {
-                nodejs('npm install')
+                testenvnode('npm') {
+                    sh 'npm install'
+                }
             }
         }
         stage('fetch app code') {
