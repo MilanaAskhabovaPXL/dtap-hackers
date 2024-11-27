@@ -37,6 +37,12 @@ pipeline {
                 }
             }
         }
+        stage ('deployment'){
+            steps{
+                sh 'docker run -d --name calculator-app -p 3000:3000 milanaaskhabova/calculator-app-finished:latest'
+            }
+        }
+
         
     }
 post {
