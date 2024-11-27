@@ -42,13 +42,11 @@ pipeline {
                 sh 'docker rm -f calculator-app'
                 sh 'docker run -d --name calculator-app -p 3000:3000 milanaaskhabova/calculator-app-finished:latest'
             }
+        }   
+    }
+    post {
+        always {
+            cleanWs()
         }
-
-        
     }
-post {
-    always {
-        cleanWs()
-    }
-}
 }
